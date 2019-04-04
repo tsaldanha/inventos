@@ -6,9 +6,9 @@ O Desafio consiste em criar uma landing page de reserva de action figures dos mi
 
 ### Tecnologias
 
-[Ruby on Rails](https://guides.rubyonrails.org/getting_started.html)
-[Coffescript](https://coffeescript.org)
-[Sass](https://sass-lang.com)
-[Slim](http://slim-lang.com)
-[Bootstrap](https://getbootstrap.com)
+- [Ruby on Rails](https://guides.rubyonrails.org/getting_started.html)
+- [Coffescript](https://coffeescript.org)
+- [Sass](https://sass-lang.com)
+- [Slim](http://slim-lang.com)
+- [Bootstrap](https://getbootstrap.com)
 
