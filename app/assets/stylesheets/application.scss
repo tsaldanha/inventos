@@ -13,3 +13,21 @@
  *= require_tree .
  *= require_self
  */
+@import "bootstrap";
+
+$yellow: #FBDC71;
+$blue: #354B65;
+$darkgrey: #333;
+
+body{
+    color: $darkgrey;
+}
+header.container-fluid{
+    background: $yellow;
+    height: 50px;
+    margin-bottom: 20px;
+    padding-top: 10px;
+}
+.logo-img{
+    width: 250px;
+}

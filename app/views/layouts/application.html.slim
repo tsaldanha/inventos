@@ -2,10 +2,19 @@ doctype html
 html
   head
     title Inventos
-    == csrf_meta_tags
+    meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"
 
+    == csrf_meta_tags
     == stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' 
     == javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    
 
   body
-    == yield 
+    header.container-fluid
+      nav.container
+        ul.nav
+          li
+            a href="/" 
+              ==image_tag "Logo.png", class: "logo-img"
+    div.container
+      == yield 

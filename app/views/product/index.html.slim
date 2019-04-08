@@ -1,0 +1,22 @@
+
+div.jumbotron.jumbotron-fluid
+    div.container
+        h1.display-4 Os Minions estão chegando!
+        p.lead a partir de 17/04 os minions vão chegar na nossa loja! 
+
+h2 Reserve o seu Minion!
+
+- unless @products.empty?
+    div.row
+      - @products.each do |product|
+        div.col
+            = link_to product_path(product.id) do
+                div.name = product.name
+                div.price 
+                    | R$: 
+                    == product.price
+- else
+    p
+     | No items found.  Please add some inventory.
+       Thank you!
+       

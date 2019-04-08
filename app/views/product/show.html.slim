@@ -1,0 +1,11 @@
+div.product_detail
+        
+    h1 == @product.name
+
+    p
+        == @product.description
+        
+    p
+        | R$:
+        == @product.price
+    
