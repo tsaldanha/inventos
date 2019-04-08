@@ -6,6 +6,6 @@ div.product_detail
         == @product.description
         
     p
-        | R$:
-        == @product.price
-    
+        == @product.format_currency
+    p 
+        button.btn.btn-primary type="button" Reserve agora!

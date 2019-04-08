@@ -13,8 +13,7 @@ h2 Reserve o seu Minion!
             = link_to product_path(product.id) do
                 div.name = product.name
                 div.price 
-                    | R$: 
-                    == product.price
+                    = product.format_currency
 - else
     p
      | No items found.  Please add some inventory.
