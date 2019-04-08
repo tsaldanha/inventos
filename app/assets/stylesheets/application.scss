@@ -24,10 +24,16 @@ body{
 }
 header.container-fluid{
     background: $yellow;
-    height: 50px;
     margin-bottom: 20px;
-    padding-top: 10px;
 }
 .logo-img{
     width: 250px;
+}
+.footer{
+    background: $yellow;
+}
+@include media-breakpoint-down(xs) {
+    .logo-img{
+        width: 150px;
+    }
 }
