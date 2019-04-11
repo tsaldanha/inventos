@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190408043056) do
+ActiveRecord::Schema.define(version: 20190409012329) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "firstName"
-    t.string   "lastName"
-    t.string   "cpf"
+    t.string   "firstName",                           null: false
+    t.string   "lastName",                            null: false
+    t.string   "cpf",                                 null: false
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
     t.string   "email",                  default: "", null: false
@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 20190408043056) do
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
+    t.string   "street"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "neighborhood"
+    t.string   "city"
+    t.string   "state"
+    t.string   "postalCode"
     t.index ["email"], name: "index_customers_on_email", unique: true, using: :btree
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true, using: :btree
   end
