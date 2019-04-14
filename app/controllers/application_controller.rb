@@ -10,5 +10,11 @@ class ApplicationController < ActionController::Base
         devise_parameter_sanitizer.permit(:account_update, keys: [:firstName, :lastName, :username, :cpf, :street, :number, :complement, :neighborhood, :city, :state, :postalCode])
 
     end
+    
+    def after_sign_out_path_for(resource_or_scope)
+      #did not find any other successful way to reset session
+      session[:cart] = []
+      root_path
+    end
   
 end

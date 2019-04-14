@@ -11,9 +11,9 @@ class CartController < ApplicationController
         return @item
     end 
     def check
-        unless defined?(session[:cart])
-            session[:cart] = []
-        end 
+        #had to hack devise on application controller, I had a conflit reading sessions after logout
+        session[:cart] = [] unless defined?(session[:cart])
+            
         if customer_signed_in?
             if Cart.exists?(customer_id: current_customer.id)
                 @cart = Cart.find_by customer_id: current_customer.id
