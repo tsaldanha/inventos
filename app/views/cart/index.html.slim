@@ -1,0 +1,11 @@
+h1 Carrinho
+- unless @items.empty? 
+    - @items.each do |item|
+        div
+            h2 = item.name
+            span = item.format_currency
+            = link_to "Delete", cart_item_path(item.id), method: :delete
+            
+- else
+    p 
+    | nenhum produto encontrado

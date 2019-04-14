@@ -34,7 +34,7 @@ html.h-100
                 = link_to "Logout", destroy_customer_session_path, method: :delete, class: "nav-link"
         ul.navbar-nav
           li.nav-item
-              a.nav-link href="#"
+              = link_to cart_index_path do
                 i.fas.fa-shopping-bag
             
     main.flex-shrink-0
@@ -46,4 +46,5 @@ html.h-100
         
         -if customer_signed_in? 
           = current_customer.firstName
-        
+          = current_customer.id
+          = customer_session
