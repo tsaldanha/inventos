@@ -1,0 +1,60 @@
+h1 Checkout
+
+== form_for :order, :url => order_index_path() do |f| 
+    div
+        | Nome: 
+        == @customer.firstName 
+        |  
+        == @customer.lastName
+    div
+        | CPF: 
+        == @customer.cpf
+    hr
+    h2 Endereço
+    div 
+        = f.label :street
+        br
+        = f.text_field :street, autofocus: true, :value => @customer.street
+    div 
+        = f.label :number
+        br
+        = f.text_field :number, autofocus: true, :value => @customer.number
+    div 
+        = f.label :complement
+        br
+        = f.text_field :complement, autofocus: true, :value => @customer.complement
+    div 
+        = f.label :neighborhood
+        br
+        = f.text_field :neighborhood, autofocus: true, :value => @customer.neighborhood
+    div 
+        = f.label :city
+        br
+        = f.text_field :city, autofocus: true, :value => @customer.city
+    div 
+        = f.label :state
+        br
+        = f.text_field :state, autofocus: true, :value => @customer.state
+    div 
+        = f.label :postalCode
+        br
+        = f.text_field :postalCode, autofocus: true, :value => @customer.postalCode
+    
+    hr
+     h2 Itens do Carrinho
+    
+    div 
+    - @items.each do |item|
+            div
+                h4 = item.name
+                span = item.format_currency
+    
+    hr
+    h2 Total 
+    == @total_currency
+    
+    hr
+    button#addToCart.btn.btn-primary type="submit" Finalizar Reserva
+    
+    
+    

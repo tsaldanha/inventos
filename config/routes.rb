@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   
   resources :product, only: [:index, :show]
   resources :cart, only: [:index]
+  resources :order
   
   post 'cart/item/:id(.:format)', :to => 'cart#add_item', :as => :cart_item
   delete 'cart/item/:id(.:format)', :to => 'cart#delete_item'

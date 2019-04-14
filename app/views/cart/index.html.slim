@@ -1,10 +1,15 @@
 h1 Carrinho
 - unless @items.empty? 
-    - @items.each do |item|
+    == form_for :order, :url => new_order_path(), method: "get" do
+
+        - @items.each do |item|
+            div
+                h2 = item.name
+                span = item.format_currency
+                = link_to "Delete", cart_item_path(item.id), method: :delete
+            
         div
-            h2 = item.name
-            span = item.format_currency
-            = link_to "Delete", cart_item_path(item.id), method: :delete
+            button#addToCart.btn.btn-primary Finalizar Reserva    
             
 - else
     p 
