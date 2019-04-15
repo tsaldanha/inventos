@@ -47,11 +47,11 @@ h1 Checkout
     - @items.each do |item|
             div
                 h4 = item.name
-                span = item.format_currency
+                span = format_currency(item.price)
     
     hr
     h2 Total 
-    == @total_currency
+    == format_currency(@total)
     
     hr
     button#addToCart.btn.btn-primary type="submit" Finalizar Reserva

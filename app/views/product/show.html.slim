@@ -8,6 +8,6 @@ div.product_detail
         p
             == @product.description
         p
-            == @product.format_currency
+            == format_currency(@product.price)
         p 
             button#addToCart.btn.btn-primary type="submit" Reserve agora!

@@ -1,4 +1,9 @@
 class OrderController < ApplicationController
+    helper ApplicationHelper
+    
+    before_action :require_login
+    before_action :require_cart
+    
     def index
         
     end
@@ -6,17 +11,15 @@ class OrderController < ApplicationController
     def new
         @customer = Customer.find(current_customer.id)
         @items = get_cart
-        @total_currency = format_currency(@order_total)
+        @total = @cart.total
     end 
     
     def get_cart
         @cart = Cart.find_by customer_id: current_customer.id
         @items = []
-        @order_total = 0
         @cart.items.each do |item|
             item = get_item(item["id"])
             @items.push(item)
-            @order_total += item.price
         end
         return @items
     end
@@ -31,12 +34,24 @@ class OrderController < ApplicationController
     
     def create
         #verificar se já existe um pedido.
-        #salvar o pedido
-        #reduzir o estoque dos itens
-        #destruir o carrinho no DB e zerar a sessão.
+        unless Order.exists?(customer_id: current_customer.id)
+            @cart = Cart.find_by customer_id: current_customer.id
+            @items = get_cart
+            @customer = Customer.find(current_customer.id)
+            jCustomer = @customer.to_json
+            #salvar o pedido
+            @order = Order.create(customer_id: current_customer.id, customer: jCustomer, items: @items.to_json, total_price: @cart.total)
+            #destruir o carrinho no DB e zerar a sessão.
+        end 
     end
-    
-    def format_currency(value)
-        ActiveSupport::NumberHelper.number_to_currency(@order_total, :unit => "R$", separator: ",")
+    def require_login
+        unless customer_signed_in? 
+            redirect_to new_customer_session_path
+        end
     end
+    def require_cart
+        unless Cart.exists?(customer_id: current_customer.id)
+            redirect_to new_customer_session_path
+        end 
+    end 
 end

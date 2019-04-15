@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190414063133) do
+ActiveRecord::Schema.define(version: 20190414193603) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20190414063133) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.json     "items"
+    t.float    "total"
     t.index ["customer_id"], name: "index_carts_on_customer_id", using: :btree
   end
 

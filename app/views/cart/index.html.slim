@@ -5,9 +5,11 @@ h1 Carrinho
         - @items.each do |item|
             div
                 h2 = item.name
-                span = item.format_currency
+                span = format_currency(item.price)
                 = link_to "Delete", cart_item_path(item.id), method: :delete
-            
+        
+        div
+            span == format_currency(@total)
         div
             button#addToCart.btn.btn-primary Finalizar Reserva    
             
