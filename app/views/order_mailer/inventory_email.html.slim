@@ -1,0 +1,31 @@
+h2  
+    | #{@customer.firstName} realizou o pedido #{@order.id} na Minion Store
+div style="margim-bottom:30px"
+    h2 Dados Pessoais
+    p 
+        | Nome: #{@customer.firstName} #{@customer.lastName}
+    p   
+        | CPF: #{@customer.cpf}
+    
+div style="margim-bottom:20px"
+    h2 Endereço 
+    p
+        | #{@customer.street}, #{@customer.number}
+        - unless @customer.complement.blank?
+            |, #{@customer.complement}
+        br
+        | #{@customer.neighborhood}
+        br
+        | #{@customer.city}, #{@customer.state}
+        br
+        | #{@customer.postalCode}
+
+div style="margim-bottom:20px"
+    h2 Produtos Reservados
+    - @items.each do |item| 
+        p 
+         | #{item["name"]}, preço: #{item["price"]}
+         
+    p total: #{@order.total_price}
+    
+    

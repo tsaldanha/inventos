@@ -38,11 +38,10 @@ class OrderController < ApplicationController
             @cart = Cart.find_by customer_id: current_customer.id
             @items = get_cart
             @customer = Customer.find(current_customer.id)
-            jCustomer = @customer.to_json
             #salvar o pedido
-            @order = Order.create(customer_id: current_customer.id, customer: jCustomer, items: @items.to_json, total_price: @cart.total)
+            @order = Order.create(customer_id: current_customer.id, customer: @customer.to_json, items: @items.to_json, total_price: @cart.total)
             #destruir o carrinho no DB e zerar a sessão.
-            
+            session[:cart] = []
         #else
         #    redirect_to cart_index_path
         #end

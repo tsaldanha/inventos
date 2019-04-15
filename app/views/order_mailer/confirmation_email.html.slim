@@ -1,8 +1,13 @@
 h2  Obrigado por comprar conosco
 
-div
-    b = @customer.firstName 
-    | Seu pedido #
-    b == @order.id 
-    |  foi realizado
+div style="margim-bottom:20px"
+    |  #{@customer.firstName}, seu pedido #{@order.id} foi realizado, aguarde nosso contato para confirmar seu pedido e metodo de pagamento.
+
+div style="margim-bottom:20px"
+    - @items.each do |item| 
+        p 
+         | #{item["name"]}, preço: #{item["price"]}
+         
+    p total: #{@order.total_price}
+    
     
