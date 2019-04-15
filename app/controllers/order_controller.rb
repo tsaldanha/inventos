@@ -42,13 +42,17 @@ class OrderController < ApplicationController
             #salvar o pedido
             @order = Order.create(customer_id: current_customer.id, customer: jCustomer, items: @items.to_json, total_price: @cart.total)
             #destruir o carrinho no DB e zerar a sessão.
-        end 
+            
+        else
+            redirect_to cart_index_path
+        end
     end
     def require_login
         unless customer_signed_in? 
             redirect_to new_customer_session_path
         end
     end
+    
     def require_cart
         unless Cart.exists?(customer_id: current_customer.id)
             redirect_to new_customer_session_path
