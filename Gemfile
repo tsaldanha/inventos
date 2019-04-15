@@ -28,6 +28,8 @@ gem "slim-rails"
 #bootstrap 4
 gem "bootstrap", '>= 4.3.1'
 
+gem "sendgrid-ruby"
+
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
