@@ -1,7 +1,7 @@
 class Order < ApplicationRecord
     after_save :update_inventory
     after_save :confirmation_email 
-    #after_save :inventory_email 
+    after_save :inventory_email 
     after_save :cart_cleanup
     
     def update_inventory
