@@ -1,9 +1,8 @@
-h2 
-    == @customer.firstName 
-    |Obrigado por comprar Conosco
+h2  Obrigado por comprar conosco
 
 div
-    Seu pedido #
-    b == @order.id
-    | foi realizado
+    b = @customer.firstName 
+    | Seu pedido #
+    b == @order.id 
+    |  foi realizado
     

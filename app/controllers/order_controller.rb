@@ -34,7 +34,7 @@ class OrderController < ApplicationController
     
     def create
         #verificar se já existe um pedido.
-        unless Order.exists?(customer_id: current_customer.id)
+        #unless Order.exists?(customer_id: current_customer.id)
             @cart = Cart.find_by customer_id: current_customer.id
             @items = get_cart
             @customer = Customer.find(current_customer.id)
@@ -43,9 +43,9 @@ class OrderController < ApplicationController
             @order = Order.create(customer_id: current_customer.id, customer: jCustomer, items: @items.to_json, total_price: @cart.total)
             #destruir o carrinho no DB e zerar a sessão.
             
-        else
-            redirect_to cart_index_path
-        end
+        #else
+        #    redirect_to cart_index_path
+        #end
     end
     def require_login
         unless customer_signed_in? 
