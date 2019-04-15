@@ -1,60 +1,48 @@
 h1 Checkout
 
 == form_for :order, :url => order_index_path() do |f| 
-    div
-        | Nome: 
-        == @customer.firstName 
-        |  
-        == @customer.lastName
-    div
-        | CPF: 
-        == @customer.cpf
-    hr
-    h2 Endereço
-    div 
-        = f.label :street
-        br
-        = f.text_field :street, autofocus: true, :value => @customer.street
-    div 
-        = f.label :number
-        br
-        = f.text_field :number, autofocus: true, :value => @customer.number
-    div 
-        = f.label :complement
-        br
-        = f.text_field :complement, autofocus: true, :value => @customer.complement
-    div 
-        = f.label :neighborhood
-        br
-        = f.text_field :neighborhood, autofocus: true, :value => @customer.neighborhood
-    div 
-        = f.label :city
-        br
-        = f.text_field :city, autofocus: true, :value => @customer.city
-    div 
-        = f.label :state
-        br
-        = f.text_field :state, autofocus: true, :value => @customer.state
-    div 
-        = f.label :postalCode
-        br
-        = f.text_field :postalCode, autofocus: true, :value => @customer.postalCode
-    
-    hr
-     h2 Itens do Carrinho
-    
-    div 
-    - @items.each do |item|
-            div
-                h4 = item.name
-                span = format_currency(item.price)
-    
-    hr
-    h2 Total 
-    == format_currency(@total)
-    
-    hr
-    button#addToCart.btn.btn-primary type="submit" Finalizar Reserva
+    div.row.checkout-cards
+        div.col-lg-4
+            div.card
+                div.card-header Informações Pessoais
+                div.card-body
+                    p.card-text 
+                        | Nome: #{@customer.firstName} #{@customer.lastName}
+
+                    p.card-text
+                        | CPF: #{@customer.cpf}
+                        
+        div.col-lg-4
+            div.card 
+                div.card-header Endereço
+                div.card-body
+                    p.card-text
+                        | #{@customer.street}, #{@customer.number}
+                        - unless @customer.complement.blank?
+                            |, #{@customer.complement}
+                        br
+                        | #{@customer.neighborhood}
+                        br
+                        | #{@customer.city}, #{@customer.state}
+                        br
+                        | #{@customer.postalCode}
+           
+        div.col-lg-4.checkout-cart
+            div.card
+                div.card-header Carrinho
+                div.card-body
+                    - @items.each do |item|
+                        div.card.mb-3.product-card
+                            div.row.no-gutters
+                                div.col-3
+                                    ==image_tag "fallback_img.png", class: "cart-card-img"
+                                div.col-9
+                                    div.card-body
+                                        h5.card-title = item.name
+                                        p.card-text = format_currency(item.price)
+                                        
+                div.card-footer Total #{format_currency(@total)}
+            button#addToCart.btn.btn-primary.btn-block type="submit" Finalizar Reserva
     
     
     

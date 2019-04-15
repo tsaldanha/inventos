@@ -43,8 +43,3 @@ html.h-100
     footer.footer.mt-auto.py-3
       div.container
         | Sticky footer
-        
-        -if customer_signed_in? 
-          = current_customer.firstName
-          = current_customer.id
-          = customer_session

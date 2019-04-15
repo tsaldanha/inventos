@@ -1,13 +1,17 @@
-div.product_detail
-
-    h1 == @product.name
+div.product-detail
     == form_for :cart, :url => cart_item_path() do 
         = hidden_field_tag 'product_id', @product.id
         = hidden_field_tag 'product_qty', '1'
         = hidden_field_tag 'product_price', @product.price
-        p
-            == @product.description
-        p
-            == format_currency(@product.price)
-        p 
-            button#addToCart.btn.btn-primary type="submit" Reserve agora!
+        div.row
+            div.col-lg-6.col-12
+                ==image_tag "fallback_img.png", class: "product-detail-image"
+            div.col-lg-6.col-12
+                div.row
+                    div.product-name.col-6.h1 == @product.name
+                    div.product-price.text-muted.col-6.text-right.h1 == format_currency(@product.price)
+                p
+                    == @product.description
+                   
+                p 
+                    button#addToCart.btn.btn-primary.btn-block type="submit" Reserve agora!

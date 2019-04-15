@@ -1,17 +1,30 @@
-h1 Carrinho
+
 - unless @items.empty? 
     == form_for :order, :url => new_order_path(), method: "get" do
-
-        - @items.each do |item|
-            div
-                h2 = item.name
-                span = format_currency(item.price)
-                = link_to "Delete", cart_item_path(item.id), method: :delete
-        
-        div
-            span == format_currency(@total)
-        div
-            button#addToCart.btn.btn-primary Finalizar Reserva    
+        div.row
+            h1.col-12 Carrinho
+            div.col-12
+                | Produtos : #{@items.length}
+            - @items.each do |item|
+                div.col-12.col-lg-6.offset-lg-3
+                    div.card.product-card.mb-3
+                        div.row.no-gutters
+                            div.col-4
+                                ==image_tag "fallback_img.png", class: "cart-card-img"
+                            div.col-8
+                                div.card-body
+                                    div.card-title = item.name
+                                    div.card-subtitle.mb-2.text-muted = format_currency(item.price)
+                                    div.card-text 
+                                        | Quantidade: 1
+                                    = link_to  cart_item_path(item.id), method: :delete do
+                                        i.far.fa-trash-alt
+                div.w-100
+            div.col-12.col-lg-6.offset-lg-3
+                span Total: 
+                span == format_currency(@total)
+            div.col-12.col-lg-6.offset-lg-3
+                button#addToCart.btn.btn-primary.btn-block Finalizar Reserva    
             
 - else
     p 

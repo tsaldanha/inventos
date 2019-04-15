@@ -7,13 +7,16 @@ div.jumbotron.jumbotron-fluid
 h2 Reserve o seu Minion!
 
 - unless @products.empty?
-    div.row
+    div.row.product-list
       - @products.each do |product|
-        div.col
-            = link_to product_path(product.id) do
-                div.name = product.name
-                div.price 
-                    = format_currency(product.price)
+        div.col-md-3.col-6
+            div.card.text-center
+                = link_to product_path(product.id) do
+                    ==image_tag "fallback_img.png", class: "card-img-top"
+                div.card-body
+                    = link_to product_path(product.id) do
+                        div.card-title = product.name
+                        div.card-text = format_currency(product.price)
 - else
     p
      | No items found.  Please add some inventory.

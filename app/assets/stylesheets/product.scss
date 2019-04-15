@@ -1,3 +1,18 @@
 // Place all the styles related to the Product controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-list{
+    .col-md-3{
+        margin-bottom: 20px;
+    }
+}
+.product-detail{
+    .product-detail-image{
+        width: 100%;
+        height: 300px;
+    }
+    .product-price{
+        vertical-align: bottom;
+    }
+}
