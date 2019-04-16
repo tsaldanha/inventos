@@ -15,7 +15,7 @@ class CartController < ApplicationController
     end 
     def check
         #had to hack devise on application controller, I had a conflit reading sessions after logout
-        session[:cart] = [] unless defined?(session[:cart])
+        session[:cart] = [] unless session[:cart]
             
         if customer_signed_in?
             if Cart.exists?(customer_id: current_customer.id)
@@ -69,6 +69,7 @@ class CartController < ApplicationController
     end
     def find_item(product_id)
         finder = false
+        return finder unless session[:cart]
         session[:cart].each do |i|
             finder = true if i["id"] == product_id
         end
